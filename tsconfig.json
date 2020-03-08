@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["esnext"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "target": "ES6"
+  },
+  // "include": ["./src/**/*"],
+  "exclude": ["./node_modules"]
+}
