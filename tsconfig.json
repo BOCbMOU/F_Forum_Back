@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
-    "lib": ["esnext"],
+    "lib": ["ESNext"],
     "module": "CommonJS",
     "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
@@ -11,6 +11,6 @@
     "noImplicitReturns": true,
     "target": "ES6"
   },
-  // "include": ["./src/**/*"],
+  "include": ["./src", "./server.ts"],
   "exclude": ["./node_modules"]
 }
