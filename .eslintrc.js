@@ -73,7 +73,7 @@ module.exports = {
     'import/no-anonymous-default-export': 'warn',
     'import/group-exports': 'warn',
 
-    'prettier/prettier': 'error',
+    'prettier/prettier': 'off',
     'arrow-parens': ['off', 'as-needed', { requireForBlockBody: true }],
     'comma-dangle': [
       'warn',
@@ -85,5 +85,10 @@ module.exports = {
     ],
     'optimize-regex/optimize-regex': 'warn',
     'sort-keys': 'off',
+    'keyword-spacing': 'off',
+    'no-trailing-spaces': 'off',
+    'padded-blocks': 'off',
+    'eol-last': 'off',
+    'object-curly-newline': 'off',
   },
 };
