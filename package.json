@@ -9,9 +9,10 @@
     "jest": "jest --coverage=false",
     "test": "LOG_LEVEL=fatal jest",
     "test:ci": "npm test -- --no-cache",
-    "code:check": "prettier --check \"**/*.{json,js,jsx,ts,tsx,yml}\"",
-    "prettier:fix": "prettier --write \"**/*.{json,js,jsx,ts,tsx,yml}\"",
-    "eslint": "eslint"
+    "prettier": "prettier --check \"**/*{json,js,jsx,ts,tsx,yml}\"",
+    "prettier:fix": "prettier --write \"**/*{json,js,jsx,ts,tsx,yml}\"",
+    "lint": "eslint --ext .ts .",
+    "lint:fix": "eslint --ext .ts . --fix"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",

@@ -1,0 +1,4 @@
+**/node_modules/**
+**/*.d.ts
+*.config.js
+source-map-install.js
