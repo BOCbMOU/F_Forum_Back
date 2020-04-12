@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { IUserAdd, IUserUpdate, IUser } from '../types/User.t';
 
-const userSchema = new mongoose.Schema(
+export const userSchema = new mongoose.Schema(
   {
     username: { type: String, trim: true, unique: true, required: true },
     avatar: { type: String, trim: true, unique: false, required: false },
@@ -12,18 +12,21 @@ const userSchema = new mongoose.Schema(
 
 const UserModel = mongoose.model('User', userSchema);
 
-const addUser = async (model: IUserAdd) =>
+export const addUser = async (model: IUserAdd) =>
   (new UserModel(model).save() as unknown) as IUser;
 
-const updateUser = async (username: string, update: IUserUpdate) =>
+export const updateUser = async (username: string, update: IUserUpdate) =>
   (UserModel.findOneAndUpdate({ username }, update, {
     new: true,
   }) as unknown) as IUser;
 
-const getUserByName = async (username: string) =>
+export const getUserById = async (_id: string) =>
+  (UserModel.findById(_id) as unknown) as IUser;
+
+export const getUserByName = async (username: string) =>
   (UserModel.findOne({ username }) as unknown) as IUser;
 
-const getUsersByStatus = async (
+export const getUsersByStatus = async (
   status: string,
   { skip, limit }: { skip: number; limit: number }
 ) =>
@@ -34,8 +37,6 @@ const getUsersByStatus = async (
 UserModel.schema
   .path('username')
   .validate(
-    async (username) => !(await getUserByName(username)),
+    async (username: string) => !(await getUserByName(username)),
     'Username is already in use!'
   );
-
-export { addUser, updateUser, getUserByName, getUsersByStatus, userSchema };
