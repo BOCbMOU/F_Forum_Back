@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { IUserAdd, IUserUpdate } from '../types/User';
+import { IUserAdd, IUserUpdate, IUser } from '../types/User.t';
 
 const userSchema = new mongoose.Schema(
   {
@@ -12,21 +12,24 @@ const userSchema = new mongoose.Schema(
 
 const UserModel = mongoose.model('User', userSchema);
 
-const addUser = async (model: IUserAdd) => new UserModel(model).save();
+const addUser = async (model: IUserAdd) =>
+  (new UserModel(model).save() as unknown) as IUser;
 
 const updateUser = async (username: string, update: IUserUpdate) =>
-  UserModel.findOneAndUpdate({ username }, update, { new: true });
+  (UserModel.findOneAndUpdate({ username }, update, {
+    new: true,
+  }) as unknown) as IUser;
 
 const getUserByName = async (username: string) =>
-  UserModel.findOne({ username });
+  (UserModel.findOne({ username }) as unknown) as IUser;
 
 const getUsersByStatus = async (
   status: string,
   { skip, limit }: { skip: number; limit: number }
 ) =>
-  UserModel.find({ status }, null, { skip, limit }).sort({
+  (UserModel.find({ status }, null, { skip, limit }).sort({
     createdAt: 1,
-  });
+  }) as unknown) as IUser[];
 
 UserModel.schema
   .path('username')

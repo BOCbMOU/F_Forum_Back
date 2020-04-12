@@ -6,7 +6,7 @@ import * as session from 'express-session';
 
 import './src/utils/loadDotEnv';
 import authenticate from './src/middlewares/authenticate';
-import defaultErrorHandler from './src/middlewares/defaultErrorHandler';
+import { defaultErrorHandler } from './src/middlewares/errorHandler';
 
 import authRouter from './src/routes/authRoute';
 import indexRouter from './src/routes/indexRoute';
