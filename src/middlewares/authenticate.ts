@@ -3,9 +3,9 @@ import { UNAUTHORIZED_USER_OBJECT } from '../consts';
 
 import AuthError from '../errors/AuthError';
 import { getUserByName as UMGetUserByName } from '../models/UserModel';
-import { IRequest, IResponse, INext } from '../types/expressUse';
-import { IDecodedToken } from '../types/jsonWebToken';
-import { IUserAdd } from '../types/user';
+import { IRequest, IResponse, INext } from '../types/ExpressUse';
+import { IDecodedToken } from '../types/JsonWebToken';
+import { IUserAdd } from '../types/User';
 
 import initLogger from '../utils/logger';
 

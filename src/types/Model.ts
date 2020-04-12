@@ -1,4 +1,4 @@
-export interface IDateStamps {
+export interface IDefaultModel {
   updatedAt: string;
   createdAt: string;
 }
