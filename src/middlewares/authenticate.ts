@@ -5,7 +5,7 @@ import AuthError from '../errors/AuthError';
 import { getUserByName as UMGetUserByName } from '../models/UserModel';
 import { IRequest, IResponse, INext } from '../types/expressUse';
 import { IDecodedToken } from '../types/jsonWebToken';
-import { IUser } from '../types/user';
+import { IUserAdd } from '../types/user';
 
 import initLogger from '../utils/logger';
 
@@ -17,14 +17,14 @@ const jwtVerify = async (token: string): Promise<IDecodedToken> =>
 const authenticate = async (req: IRequest, _res: IResponse, next: INext) => {
   const { authorization } = req.headers;
   if (!authorization) {
-    req.user = (UNAUTHORIZED_USER_OBJECT as any) as IUser;
+    req.user = (UNAUTHORIZED_USER_OBJECT as any) as IUserAdd;
     next();
     return;
   }
 
   const [, token] = authorization.split(' ');
   if (!token) {
-    req.user = (UNAUTHORIZED_USER_OBJECT as any) as IUser;
+    req.user = (UNAUTHORIZED_USER_OBJECT as any) as IUserAdd;
     next();
     return;
   }

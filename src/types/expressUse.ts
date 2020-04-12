@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { IUser } from './user';
+import { IUserAdd } from './user';
 
 export interface IRequest extends Request {
-  user?: IUser;
+  user?: IUserAdd;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
