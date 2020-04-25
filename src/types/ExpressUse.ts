@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IUserAdd } from './user';
+import { IUserAdd } from './User.t';
 
 export interface IRequest extends Request {
   user?: IUserAdd;

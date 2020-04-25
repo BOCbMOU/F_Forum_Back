@@ -3,5 +3,5 @@ import { IRequest, IResponse, INext } from './ExpressUse';
 export type IHandler = (
   req: IRequest,
   res: IResponse,
-  next: INext
+  next?: INext
 ) => Promise<void> | void;
