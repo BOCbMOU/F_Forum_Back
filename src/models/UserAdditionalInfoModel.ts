@@ -5,7 +5,7 @@ import {
   IUserAdditionalInfoUpdate,
 } from '../types/UserAdditionalInfo';
 
-export const userAdditionalInfoSchema = new mongoose.Schema(
+export const schema = new mongoose.Schema(
   {
     userId: { type: String, trim: true, unique: true, required: true },
     about: { type: String, trim: true, unique: false, required: false },
@@ -15,21 +15,21 @@ export const userAdditionalInfoSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const UserModel = mongoose.model(
-  'UserAdditionalInfo',
-  userAdditionalInfoSchema
-);
+const Model = mongoose.model('UserAdditionalInfo', schema);
 
+// add
 export const addUserAdditionalInfo = async (model: IUserAdditionalInfoAdd) =>
-  (new UserModel(model).save() as unknown) as IUserAdditionalInfo;
+  (new Model(model).save() as unknown) as IUserAdditionalInfo;
 
+// update
 export const updateUserAdditionalInfo = async (
   userId: string,
   update: IUserAdditionalInfoUpdate
 ) =>
-  (UserModel.findOneAndUpdate({ userId }, update, {
+  (Model.findOneAndUpdate({ userId }, update, {
     new: true,
   }) as unknown) as IUserAdditionalInfo;
 
+// get
 export const getUserAdditionalInfoByUserId = async (userId: string) =>
-  (UserModel.findOne({ userId }) as unknown) as IUserAdditionalInfo;
+  (Model.findOne({ userId }) as unknown) as IUserAdditionalInfo;
